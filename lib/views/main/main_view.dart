@@ -41,11 +41,10 @@ class MainView extends GetView<MainController> {
               height: double.infinity,
               width: double.infinity,
             ),
-            Obx(
-              () => IndexedStack(
-                index: controller.selectedTabIndex.value,
-                children: controller.getPages(),
-              ),
+            TabBarView(
+              controller: controller.tabController,
+              physics: const NeverScrollableScrollPhysics(),
+              children: controller.getPages(),
             ),
           ]),
         ),

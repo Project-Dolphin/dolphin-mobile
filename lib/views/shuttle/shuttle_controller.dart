@@ -6,6 +6,7 @@ class ShuttleController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    print('Work2');
 
     userName('Init Completed');
   }

@@ -1,8 +1,8 @@
-import 'package:dolphin_mobile/views/shuttle/shuttle_controller.dart';
+import 'package:dolphin_mobile/views/settings/settings_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SettingsView extends GetView<ShuttleController> {
+class SettingsView extends GetView<SettingsController> {
   const SettingsView({Key? key}) : super(key: key);
 
   @override

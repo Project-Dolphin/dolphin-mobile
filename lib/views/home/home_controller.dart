@@ -6,6 +6,7 @@ class HomeController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    print('Work1');
 
     userName('Init Completed');
   }
