@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 class MainView extends GetView<MainController> {
   Widget _buildTabs(BuildContext context) {
     final items = controller.tabMenuData
-        .map((e) => BottomNavigationBarItem(icon: Icon(e.icon), label: e.name))
+        .map((e) => BottomNavigationBarItem(
+            icon: e.icon, activeIcon: e.iconActive, label: e.name))
         .toList();
     return Obx(
       () => BottomNavigationBar(
@@ -29,11 +30,23 @@ class MainView extends GetView<MainController> {
     return WillPopScope(
       onWillPop: controller.handlePopAsync,
       child: Scaffold(
-        body: Obx(
-          () => IndexedStack(
-            index: controller.selectedTabIndex(),
-            children: controller.getPages(),
-          ),
+        body: SizedBox(
+          height: double.infinity,
+          width: double.infinity,
+          child: Stack(children: [
+            Image.asset(
+              'assets/images/bg_main.png',
+              fit: BoxFit.fill,
+              height: double.infinity,
+              width: double.infinity,
+            ),
+            Obx(
+              () => IndexedStack(
+                index: controller.selectedTabIndex(),
+                children: controller.getPages(),
+              ),
+            ),
+          ]),
         ),
         bottomNavigationBar: _buildTabs(context),
       ),

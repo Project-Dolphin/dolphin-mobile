@@ -8,9 +8,12 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Home'),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
       ),
       body: Center(
         child: Column(

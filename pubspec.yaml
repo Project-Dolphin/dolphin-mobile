@@ -58,20 +58,20 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/icons/
     - assets/images/
-    - assets/images/bg_main.png
 
   fonts:
     - family: Pretendard
       fonts:
-        - asset: assets/fonts/Pretendard/Pretendard-Regular.otf
-        - asset: assets/fonts/Pretendard/Pretendard-Thin.otf
+        - asset: assets/fonts/Pretendard-Regular.otf
+        - asset: assets/fonts/Pretendard-Thin.otf
           weight: 100
-        - asset: assets/fonts/Pretendard/Pretendard-Light.otf
+        - asset: assets/fonts/Pretendard-Light.otf
           weight: 300
-        - asset: assets/fonts/Pretendard/Pretendard-Medium.otf
+        - asset: assets/fonts/Pretendard-Medium.otf
           weight: 500
-        - asset: assets/fonts/Pretendard/Pretendard-Bold.otf
+        - asset: assets/fonts/Pretendard-Bold.otf
           weight: 700
-        - asset: assets/fonts/Pretendard/Pretendard-Black.otf
+        - asset: assets/fonts/Pretendard-Black.otf
           weight: 900

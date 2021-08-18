@@ -5,6 +5,7 @@ import 'package:dolphin_mobile/views/notices/index.dart';
 import 'package:dolphin_mobile/views/settings/index.dart';
 import 'package:dolphin_mobile/views/shuttle/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 abstract class NavKeys {
@@ -31,13 +32,15 @@ class NavItem {
 
 class NavItemData {
   final String name;
-  final IconData icon;
+  final Widget icon;
+  final Widget iconActive;
   final String route;
   final NavItem navItem;
 
   NavItemData(
       {required this.name,
       required this.icon,
+      required this.iconActive,
       required this.navItem,
       required this.route});
 }
@@ -47,7 +50,11 @@ class BottomTabData {
     NavItemData(
       name: 'tab.home'.tr,
       route: AppRoutes.Home,
-      icon: Icons.home,
+      icon: SvgPicture.asset('assets/icons/ic_tab_home.svg'),
+      iconActive: SvgPicture.asset(
+        'assets/icons/ic_tab_home.svg',
+        color: Colors.blue,
+      ),
       navItem: NavItem(
         navKey: NavKeys.HOME,
         getPage: GetPage(
@@ -60,7 +67,11 @@ class BottomTabData {
     NavItemData(
       name: 'tab.shuttle'.tr,
       route: AppRoutes.Shuttle,
-      icon: Icons.home,
+      icon: SvgPicture.asset('assets/icons/ic_tab_shuttle.svg'),
+      iconActive: SvgPicture.asset(
+        'assets/icons/ic_tab_shuttle.svg',
+        color: Colors.blue,
+      ),
       navItem: NavItem(
         navKey: NavKeys.SHUTTLE,
         getPage: GetPage(
@@ -73,7 +84,11 @@ class BottomTabData {
     NavItemData(
       name: 'tab.diet'.tr,
       route: AppRoutes.Diet,
-      icon: Icons.home,
+      icon: SvgPicture.asset('assets/icons/ic_tab_diet.svg'),
+      iconActive: SvgPicture.asset(
+        'assets/icons/ic_tab_diet.svg',
+        color: Colors.blue,
+      ),
       navItem: NavItem(
         navKey: NavKeys.DIET,
         getPage: GetPage(
@@ -86,7 +101,11 @@ class BottomTabData {
     NavItemData(
       name: 'tab.notices'.tr,
       route: AppRoutes.Notices,
-      icon: Icons.home,
+      icon: SvgPicture.asset('assets/icons/ic_tab_notices.svg'),
+      iconActive: SvgPicture.asset(
+        'assets/icons/ic_tab_notices.svg',
+        color: Colors.blue,
+      ),
       navItem: NavItem(
         navKey: NavKeys.NOTICES,
         getPage: GetPage(
@@ -99,7 +118,11 @@ class BottomTabData {
     NavItemData(
       name: 'tab.settings'.tr,
       route: AppRoutes.Settings,
-      icon: Icons.home,
+      icon: SvgPicture.asset('assets/icons/ic_tab_settings.svg'),
+      iconActive: SvgPicture.asset(
+        'assets/icons/ic_tab_settings.svg',
+        color: Colors.blue,
+      ),
       navItem: NavItem(
         navKey: NavKeys.SETTINGS,
         getPage: GetPage(
