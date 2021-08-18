@@ -14,6 +14,7 @@ analyzer:
     implicit-casts: false
 
   errors:
+    avoid_positional_boolean_parameters: ignore
     sort_pub_dependencies: ignore
     non_constant_identifier_names: ignore
     avoid_function_literals_in_foreach_calls: ignore
