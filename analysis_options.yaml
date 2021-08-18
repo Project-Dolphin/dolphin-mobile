@@ -27,10 +27,10 @@ analyzer:
     missing_required_param: error
     parameter_assignments: error
     prefer_const_constructors: error
-    unused_import: error
     sort_constructors_first: warning
-    unused_field: warning
     unused_element: ignore
+    unused_field: warning
+    unused_import: warning
     overridden_fields: ignore
     use_setters_to_change_properties: ignore
     implementation_imports: ignore

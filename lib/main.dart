@@ -1,6 +1,7 @@
 // import 'package:dolphin_mobile/di.dart';
 import 'package:dolphin_mobile/langs/translation_service.dart';
 import 'package:dolphin_mobile/navigation/app_pages.dart';
+import 'package:dolphin_mobile/styles/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,12 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       defaultTransition: Transition.native,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: 'Dolphin',
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
+      theme: AppTheme.lightTheme,
       locale: TranslationService.locale,
       fallbackLocale: TranslationService.fallbackLocale,
       translations: TranslationService(),

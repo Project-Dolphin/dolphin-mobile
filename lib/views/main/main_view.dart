@@ -1,3 +1,4 @@
+import 'package:dolphin_mobile/styles/app_styles.dart';
 import 'package:dolphin_mobile/views/main/main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,13 +15,13 @@ class MainView extends GetView<MainController> {
         elevation: 8,
         iconSize: 18,
         type: BottomNavigationBarType.fixed,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
         backgroundColor: Colors.white,
-        // selectedIconTheme: IconThemeData(color: Styles.primaryColor),
-        // unselectedIconTheme: IconThemeData(color: Styles.accesoryGrey),
+        selectedLabelStyle:
+            const TextStyle(fontSize: 12, color: AppColors.primaryColor),
+        unselectedLabelStyle:
+            const TextStyle(fontSize: 12, color: AppColors.gray300),
         onTap: (idx) => controller.onTabTapAsync(idx),
-        currentIndex: controller.selectedTabIndex(),
+        currentIndex: controller.selectedTabIndex.value,
       ),
     );
   }
@@ -42,7 +43,7 @@ class MainView extends GetView<MainController> {
             ),
             Obx(
               () => IndexedStack(
-                index: controller.selectedTabIndex(),
+                index: controller.selectedTabIndex.value,
                 children: controller.getPages(),
               ),
             ),
