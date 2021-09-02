@@ -23,6 +23,7 @@ analyzer:
     directives_ordering: warning
     constant_identifier_names: ignore
     unnecessary_statements: error
+    invalid_annotation_target: ignore
     invalid_use_of_visible_for_testing_member: error
     missing_required_param: error
     parameter_assignments: error
@@ -53,6 +54,7 @@ analyzer:
     - "**/di.iconfig.dart"
     - "**/*.g.dart"
     - "**/*.gr.dart"
+    - "**/*.freezed.dart"
     - "lib/common/router/router.gr.dart"
     - "component_templates/**"
     - "packages/**"

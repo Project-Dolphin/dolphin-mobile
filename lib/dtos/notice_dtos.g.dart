@@ -6,14 +6,14 @@ part of 'notice_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-NoticePreviewDTO _$NoticePreviewDTOFromJson(Map<String, dynamic> json) =>
-    NoticePreviewDTO(
-      title: json['title'] as String,
-      date: json['date'] as String,
-      link: json['link'] as String,
+_$_NoticePreviewDTO _$$_NoticePreviewDTOFromJson(Map<String, dynamic> json) =>
+    _$_NoticePreviewDTO(
+      json['title'] as String,
+      json['date'] as String,
+      json['link'] as String,
     );
 
-Map<String, dynamic> _$NoticePreviewDTOToJson(NoticePreviewDTO instance) =>
+Map<String, dynamic> _$$_NoticePreviewDTOToJson(_$_NoticePreviewDTO instance) =>
     <String, dynamic>{
       'title': instance.title,
       'date': instance.date,

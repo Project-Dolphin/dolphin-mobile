@@ -1,54 +1,72 @@
-import 'package:dolphin_mobile/styles/app_styles.dart';
-import 'package:dolphin_mobile/views/main/main_controller.dart';
+import 'package:dolphin_mobile/di.dart';
+import 'package:dolphin_mobile/dtos/index.dart';
+import 'package:dolphin_mobile/views/base_view.dart';
+import 'package:dolphin_mobile/views/main/main_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MainView extends GetView<MainController> {
-  Widget _buildTabs(BuildContext context) {
-    final items = controller.tabMenuData
-        .map((e) => BottomNavigationBarItem(
-            icon: e.icon, activeIcon: e.iconActive, label: e.name))
-        .toList();
-    return Obx(
-      () => BottomNavigationBar(
-        items: items,
-        elevation: 8,
-        iconSize: 18,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedLabelStyle:
-            const TextStyle(fontSize: 12, color: AppColors.primaryColor),
-        unselectedLabelStyle:
-            const TextStyle(fontSize: 12, color: AppColors.gray300),
-        onTap: (idx) => controller.onTabTapAsync(idx),
-        currentIndex: controller.selectedTabIndex.value,
-      ),
+class MainView extends BaseView<MainCubit, MainState, ShuttleNextDTO> {
+  final MainCubit _cubit = serviceLocator.get<MainCubit>();
+
+  final VoidCallback onToggleTheme;
+
+  MainView(this.onToggleTheme, {Key? key}) : super(key: key);
+
+  @override
+  MainCubit getPageBloc() => _cubit;
+
+  Widget _buildShuttleView(ShuttleNextDTO shuttle) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Container(
+          height: 48.0,
+        ),
+        Text(shuttle.next[0].time),
+      ],
     );
   }
 
   @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: controller.handlePopAsync,
-      child: Scaffold(
-        body: SizedBox(
-          height: double.infinity,
-          width: double.infinity,
-          child: Stack(children: [
-            Image.asset(
-              'assets/images/bg_main.png',
-              fit: BoxFit.fill,
-              height: double.infinity,
-              width: double.infinity,
-            ),
-            TabBarView(
-              controller: controller.tabController,
-              physics: const NeverScrollableScrollPhysics(),
-              children: controller.getPages(),
-            ),
-          ]),
-        ),
-        bottomNavigationBar: _buildTabs(context),
+  Widget buildWidget(
+    BuildContext context,
+    TextDirection direction,
+    bool isDarkMode,
+  ) {
+    _cubit.getShttuleNext();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Test'),
+      ),
+      body: BlocBuilder(
+        bloc: _cubit,
+        buildWhen: (previousState, currentState) {
+          return previousState != currentState;
+        },
+        builder: (BuildContext context, MainState state) {
+          if (state is MainInitialState) {
+            return Container(color: Colors.white);
+          }
+          if (state is MainLoadingState) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state is MainErrorState) {
+            return const Center(
+                child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Text('Error'),
+            ));
+          }
+
+          if (state is MainSucceedState) {
+            return _buildShuttleView(state.data);
+          }
+
+          throw Exception(
+              'Please handle all states above, unknown state $state');
+        },
       ),
     );
   }

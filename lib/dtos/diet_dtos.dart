@@ -1,6 +1,7 @@
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+part 'diet_dtos.freezed.dart';
 part 'diet_dtos.g.dart';
 
 enum DietType {
@@ -26,42 +27,24 @@ enum DietType {
   StaffPremium,
 }
 
-@JsonSerializable()
-class DietSocietyDTO extends Equatable {
-  final DietType type;
-
-  final String value;
-
-  const DietSocietyDTO({
-    required this.type,
-    required this.value,
-  });
+@freezed
+abstract class DietSocietyDTO with _$DietSocietyDTO {
+  const factory DietSocietyDTO(
+    DietType type,
+    String value,
+  ) = _DietSocietyDTO;
 
   factory DietSocietyDTO.fromJson(Map<String, dynamic> json) =>
       _$DietSocietyDTOFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DietSocietyDTOToJson(this);
-
-  @override
-  List<Object> get props => throw [type, value];
 }
 
-@JsonSerializable()
-class DietNavalDTO extends Equatable {
-  final List<String> lunch;
-
-  final List<String> dinner;
-
-  const DietNavalDTO({
-    required this.lunch,
-    required this.dinner,
-  });
+@freezed
+abstract class DietNavalDTO with _$DietNavalDTO {
+  const factory DietNavalDTO(
+    List<String> lunch,
+    List<String> dinner,
+  ) = _DietNavalDTO;
 
   factory DietNavalDTO.fromJson(Map<String, dynamic> json) =>
       _$DietNavalDTOFromJson(json);
-
-  Map<String, dynamic> toJson() => _$DietNavalDTOToJson(this);
-
-  @override
-  List<Object> get props => throw [lunch, dinner];
 }

@@ -1,27 +1,16 @@
-import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
+part 'notice_dtos.freezed.dart';
 part 'notice_dtos.g.dart';
 
-@JsonSerializable()
-class NoticePreviewDTO extends Equatable {
-  final String title;
-
-  final String date;
-
-  final String link;
-
-  const NoticePreviewDTO({
-    required this.title,
-    required this.date,
-    required this.link,
-  });
+@freezed
+abstract class NoticePreviewDTO with _$NoticePreviewDTO {
+  const factory NoticePreviewDTO(
+    String title,
+    String date,
+    String link,
+  ) = _NoticePreviewDTO;
 
   factory NoticePreviewDTO.fromJson(Map<String, dynamic> json) =>
       _$NoticePreviewDTOFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NoticePreviewDTOToJson(this);
-
-  @override
-  List<Object> get props => throw [title, date, link];
 }
