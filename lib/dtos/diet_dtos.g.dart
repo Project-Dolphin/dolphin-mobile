@@ -6,13 +6,13 @@ part of 'diet_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-DietSocietyDTO _$DietSocietyDTOFromJson(Map<String, dynamic> json) =>
-    DietSocietyDTO(
-      type: _$enumDecode(_$DietTypeEnumMap, json['type']),
-      value: json['value'] as String,
+_$_DietSocietyDTO _$$_DietSocietyDTOFromJson(Map<String, dynamic> json) =>
+    _$_DietSocietyDTO(
+      _$enumDecode(_$DietTypeEnumMap, json['type']),
+      json['value'] as String,
     );
 
-Map<String, dynamic> _$DietSocietyDTOToJson(DietSocietyDTO instance) =>
+Map<String, dynamic> _$$_DietSocietyDTOToJson(_$_DietSocietyDTO instance) =>
     <String, dynamic>{
       'type': _$DietTypeEnumMap[instance.type],
       'value': instance.value,
@@ -54,13 +54,13 @@ const _$DietTypeEnumMap = {
   DietType.StaffPremium: 6,
 };
 
-DietNavalDTO _$DietNavalDTOFromJson(Map<String, dynamic> json) => DietNavalDTO(
-      lunch: (json['lunch'] as List<dynamic>).map((e) => e as String).toList(),
-      dinner:
-          (json['dinner'] as List<dynamic>).map((e) => e as String).toList(),
+_$_DietNavalDTO _$$_DietNavalDTOFromJson(Map<String, dynamic> json) =>
+    _$_DietNavalDTO(
+      (json['lunch'] as List<dynamic>).map((e) => e as String).toList(),
+      (json['dinner'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$DietNavalDTOToJson(DietNavalDTO instance) =>
+Map<String, dynamic> _$$_DietNavalDTOToJson(_$_DietNavalDTO instance) =>
     <String, dynamic>{
       'lunch': instance.lunch,
       'dinner': instance.dinner,

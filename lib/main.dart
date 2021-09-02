@@ -1,29 +1,30 @@
-// import 'package:dolphin_mobile/di.dart';
-import 'package:dolphin_mobile/langs/translation_service.dart';
-import 'package:dolphin_mobile/navigation/app_pages.dart';
-import 'package:dolphin_mobile/styles/app_theme.dart';
+import 'package:dolphin_mobile/services/navigation/navigation_service.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
+import 'di.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await DenpendencyInjection.initAsync();
+  await di.loadDiModules();
 
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  final NavigationService _navigationSvc =
+      di.serviceLocator.get<NavigationService>();
+
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      defaultTransition: Transition.native,
+    return MaterialApp(
       title: 'Dolphin',
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-      theme: AppTheme.lightTheme,
-      locale: TranslationService.locale,
-      fallbackLocale: TranslationService.fallbackLocale,
-      translations: TranslationService(),
+      initialRoute: _navigationSvc.initialRoute,
+      routes: _navigationSvc.initializeNavigationRoutes(
+        context,
+        onToggleTheme: () {
+          // TODO
+        },
+      ),
     );
   }
 }

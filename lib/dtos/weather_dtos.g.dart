@@ -6,15 +6,15 @@ part of 'weather_dtos.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-WeatherNowDTO _$WeatherNowDTOFromJson(Map<String, dynamic> json) =>
-    WeatherNowDTO(
-      status: json['status'] as String,
-      temparature: json['temparature'] as String,
-      windSpeed: json['windSpeed'] as String,
-      humidity: json['humidity'] as String,
+_$_WeatherNowDTO _$$_WeatherNowDTOFromJson(Map<String, dynamic> json) =>
+    _$_WeatherNowDTO(
+      json['status'] as String,
+      json['temparature'] as String,
+      json['windSpeed'] as String,
+      json['humidity'] as String,
     );
 
-Map<String, dynamic> _$WeatherNowDTOToJson(WeatherNowDTO instance) =>
+Map<String, dynamic> _$$_WeatherNowDTOToJson(_$_WeatherNowDTO instance) =>
     <String, dynamic>{
       'status': instance.status,
       'temparature': instance.temparature,
